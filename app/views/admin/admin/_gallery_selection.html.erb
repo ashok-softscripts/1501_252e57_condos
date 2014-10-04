@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="medium-12 columns">
+	<h1>Public Site - Gallery Selection</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-12 columns">
+	<%= form_tag set_public_admin_galleries_path do %>
+		<div class="row">
+		  <div class="medium-10 columns">
+			<div class="form-inputs">
+			  <%= select_tag(:gallery_id, options_from_collection_for_select(@galleries, "id", "title", Gallery.pub_availible.first.nil? ? '' : Gallery.pub_availible.first.id), :prompt => "Please select Gallery for Public Site") %>
+			</div>
+		  </div>
+		  <div class="medium-2 columns">
+			<div class="form-actions">
+			  <%= submit_tag 'Set Public', class: "button" %>
+			</div>
+		  </div>
+		</div>
+	<% end %>
+  </div>
+</div>

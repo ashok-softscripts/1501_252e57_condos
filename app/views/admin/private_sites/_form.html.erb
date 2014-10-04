@@ -1,0 +1,102 @@
+<%= f.error_notification %>
+<div class="form-inputs email medium-12 columns">
+  <%= f.input :receiver_email %>
+  <%= f.input :user_id, as: :string, input_html: { value: current_user.email }, disabled: true %>
+  <%= f.input :email_cc %>
+  <%= f.input :email_bcc %>
+  <%= f.input :ps_email %>
+</div>
+
+
+
+<h1 class="medium-12 columns" >Private Site</h1>
+
+<div class="form-inputs site medium-12 columns">
+  <%= f.input :receiver_name %>
+  <%= f.input :welcome_msg %>
+  <%= f.input :welcome_signiture, label: "Signature" %>
+</div>
+
+<h2 class="medium-12 columns" >Floor Plans</h2>
+<div class="form-inputs floor_plans medium-12 columns">
+  <% limit = (FloorPlan.brokers.count / 4).ceil %>
+  <div class="row">
+	<% 4.times do |i| %>
+		<div class="medium-3 columns">
+		  <%= f.input :floor_plans, as: :check_boxes,
+					  collection: FloorPlan.brokers.offset(i*limit).limit(limit).collect { |fp| [fp.residence, fp.id] },
+					  label: false,
+					  checked: @private_site.floor_plans ? @private_site.floor_plans.map(&:id) : [] %>
+		</div>
+	<% end %>
+  </div>
+</div>
+
+<h1 class="medium-12 columns" >Details</h1>
+<div class="form-inputs specials medium-12 columns">
+  <div class="medium-6 columns">
+	<%= f.input :si_details, as: :check_boxes,
+				collection: Gallery.details.collect { |fp| [fp.published_date.strftime("%b %d, %Y").to_s + "-" + fp.title.to_s, "g-" + fp.id.to_s] },
+				label: false,
+				checked: !@private_site.si_details.where(si_item_type: "Gallery").nil? ? @private_site.si_details.where(si_item_type: "Gallery").map { |v| "g-"+ v.si_item_id.to_s } : [] %>
+  </div>
+  <div class="medium-6 columns">
+	<%= f.input :si_details, as: :check_boxes,
+				collection: Article.details.collect { |fp| [fp.published_date.strftime("%b %d, %Y").to_s + "-" + fp.title.to_s, "p-" + fp.id.to_s] },
+				label: false,
+				checked: !@private_site.si_details.where(si_item_type: "Article").nil? ? @private_site.si_details.where(si_item_type: "Article").map { |v| "p-"+ v.si_item_id.to_s } : [] %>
+  </div>
+</div>
+
+
+
+<h1 class="medium-12 columns" >Gallery & Video</h1>
+<div class="form-inputs gallery_video medium-12 columns">
+  <% limit = Gallery.brokers.count > 4 ? (Gallery.brokers.count / 4).ceil : Gallery.brokers.count %>
+  <div class="row">
+	<% 4.times do |i| %>
+		<div class="medium-3 columns">
+		  <%= f.input :galleries, as: :check_boxes,
+					  collection: Gallery.brokers.offset(i*limit).limit(limit).collect { |fp| [fp.title, fp.id] },
+					  label: false,
+					  checked: @private_site.galleries ? @private_site.galleries.map(&:id) : [] %>
+		</div>
+	<% end %>
+  </div>
+  <% limit = PrivateVideo.content.count > 4 ? (PrivateVideo.content.count / 4).ceil : PrivateVideo.content.count %>
+  <div class="row">
+	<% 4.times do |i| %>
+		<div class="medium-3 columns">
+		  <%= f.input :private_videos, as: :check_boxes,
+					  collection: PrivateVideo.content.offset(i*limit).limit(limit).collect { |fp| [fp.title, fp.id] },
+					  label: false,
+					  checked: @private_site.private_videos ? @private_site.private_videos.map(&:id) : [] %>
+		</div>
+	<% end %>
+  </div>
+</div>
+
+
+<h1 class="medium-12 columns" >Updates</h1>
+<div class="form-inputs updates medium-12 columns">
+  <div class="row">
+	<div class="medium-4 columns">
+	  <%= f.input :si_updates, as: :check_boxes,
+				  collection: PrivateVideo.updates.collect { |fp| [fp.published_date.strftime("%b %d, %Y").to_s + "-" + fp.title.to_s, "v-" + fp.id.to_s] },
+				  label: false,
+				  checked: !@private_site.si_updates.where(si_item_type: "PrivateVideo").nil? ? @private_site.si_updates.where(si_item_type: "PrivateVideo").map { |v| "v-"+ v.si_item_id.to_s } : [] %>
+	</div>
+	<div class="medium-4 columns">
+	  <%= f.input :si_updates, as: :check_boxes,
+				  collection: Gallery.updates.collect { |fp| [fp.published_date.strftime("%b %d, %Y").to_s + "-" + fp.title.to_s, "g-" + fp.id.to_s] },
+				  label: false,
+				  checked: !@private_site.si_updates.where(si_item_type: "Gallery").nil? ? @private_site.si_updates.where(si_item_type: "Gallery").map { |v| "g-"+ v.si_item_id.to_s } : [] %>
+	</div>
+	<div class="medium-4 columns">
+	  <%= f.input :si_updates, as: :check_boxes,
+				  collection: Article.updates.collect { |fp| [fp.published_date.strftime("%b %d, %Y").to_s + "-" + fp.title.to_s, "p-" + fp.id.to_s] },
+				  label: false,
+				  checked: !@private_site.si_updates.where(si_item_type: "Article").nil? ? @private_site.si_updates.where(si_item_type: "Article").map { |v| "p-"+ v.si_item_id.to_s } : [] %>
+	</div>
+  </div>
+</div>

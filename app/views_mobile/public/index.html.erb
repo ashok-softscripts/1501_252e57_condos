@@ -1,0 +1,45 @@
+<%= render "home" %>
+<%= render "video" %>
+<div id="overlay-container">
+  <%= render "gallery" %>
+  <%= render "design" %>
+  <%= render "developer" %>
+  <%= render "neighborhood" %>
+  <%= render "pres" %>
+  <%= render "availability" %>
+  <%= render "contact" %>
+  <%= render "legal" %>
+  <%= render "thankyou" %>
+</div>
+
+<div id="menu">
+  <ul>
+	<li><span>Home</span>
+	</li>
+	<li><span>Film</span>
+	</li>
+	<li><span>Gallery</span>
+	</li>
+	<li><span>Design Team</span>
+	</li>
+	<li><span>Developers</span>
+	</li>
+	<li style="display:none;"><span>Neighborhood</span>
+	</li>
+	<li style="display:none;"><span>Press</span>
+	</li>
+	<li><span>Availability</span>
+	</li>
+	<li><span>Contact</span>
+	</li>
+  </ul>
+</div>
+
+<div id="top-bar">
+  <img id="top-logo" src="<%= asset_path("mobile/logo_top.png") %>" />
+  <img id="menu-icon" src="<%= asset_path("mobile/menu_icon.png") %>" />
+</div>
+
+<div id="orientation-message">
+	<div class="orientation-text">To view our website,<br />please rotate your device vertically.</div>
+</div>

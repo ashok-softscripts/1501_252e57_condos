@@ -1,0 +1,31 @@
+<% if !Gallery.pub_availible.empty? %>
+	<% gallery = Gallery.pub_availible.first %>
+	<div id="screen-gallery">
+	  <ul id="main-gallery" class="gallery">
+		<% gallery.gallery_images.each do |gi| %>
+			<li class="img-container">
+				<img src="<%= gi.image.url %>" alt="<%= gi.name %>"/>
+				<div class="gallery-gradient-overlay"></div>
+				<span class="gallery-caption"><p></p></span>
+			</li>
+		<% end %>
+	  </ul>
+	  <div class="back-to-video">
+		<span><img src="<%= asset_path("back_arrow.png") %>"> Back <span class="to-film">to Film</span></span>
+	  </div>
+
+	  <div class="gallery-nav-wrap">
+		  <ul class="gallery-nav">
+			<% gallery.gallery_images.each do |gi| %>
+				<li><a <%= 'class="current"' if gi.sequence == 0 %> href="#"></a></li>
+			<% end %>
+		  </ul>
+	  </div>
+	  <div id="left-gal-arrow" class="arrow-container">
+		<img src="<%= asset_path("left_arrow.png") %>" />
+	  </div>
+	  <div id="right-gal-arrow" class="arrow-container">
+		<img src="<%= asset_path("right_arrow.png") %>" />
+	  </div>
+	</div>
+<% end %>

@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+
+ */
+.extra_info {
+  display: none;
+  label {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 12px;
+  }
+  li {
+    padding-bottom: 3px;
+    font-weight: 200;
+  }
+  ul {
+    list-style: none;
+  }
+  .row {
+    height: 0px;
+  }
+}
+
+.align-right {
+  text-align: right;
+}
+
+.button.top_button {
+  margin-top: 11px;
+  margin-bottom: 0px;
+}
+
+table {
+  width: 100%;
+}
+
+.action_col {
+  width: 15%;
+}
+.date_col {
+  width: 15%;
+}
+.error{
+  small{
+    display: none;
+  }
+}
+.hint{
+  font-size: 10px;
+}
+.private_sites{
+  .date_col {
+    width: 11%;
+  }
+  .name {
+    width: 10%;
+  }
+  .plans {
+    width: 15%;
+  }
+  .inv {
+    width: 82px;
+  }
+  .prev {
+    width: 75px;
+  }
+  word-wrap: break-word;
+}

@@ -1,0 +1,134 @@
+<style>
+
+#availability-list-topdf{
+	display: table;
+	width: 283mm;
+	border-spacing: 0px;
+}
+
+#availability-list-topdf thead th{
+	font-family: Arial, "Liberation Sans", FreeSans, sans-serif;
+	font-weight: 600;
+	font-style: normal;;
+	font-size: 11px;
+	text-transform: uppercase;
+	text-align: left;
+	border-top: solid 2px black;
+	border-bottom: solid 2px black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#availability-list-topdf tbody td{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: 800;
+	font-style: italic;
+	font-size: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: solid 1px black;
+	line-height: 25px;
+}
+
+#availability-list-topdf tfoot td{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: 600;
+	font-style: italic;
+	font-size: 13px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+.legal {
+	text-align: center;
+	cursor: pointer;
+}
+.legal a {
+	font-family: 'Verlag A', 'Verlag B', 'Verlag'; font-weight: 300; font-style: normal;
+	text-decoration: none;
+	opacity: 0.6;
+	color: #FFF;
+	font-size: 16px;
+}
+.footer {
+	font-size: 8px;
+}
+.footer img{
+	float: left;
+	margin-right: 14px;
+	margin-left: 7px;
+	width: 25px;
+	height: 25px;
+}
+.header img{
+	margin-left: 450px;
+	margin-bottom: 20px;
+	width: 80px;
+	height: 80px;
+}
+.body{
+	padding-right: 30px;
+	padding-left: 30px;
+}
+div.page {
+	width: 283mm;
+	height: 180mm;
+	overflow: hidden;
+	page-break-after: auto;
+}
+</style>
+<% per_page = 9 %>
+<% page_number = (@floor_plans.count/per_page).ceil  %>
+<% (page_number+1).times do |index| %>
+	<div class="page" >
+		<div class="body">
+		  <div class="header" >
+			<%= wicked_pdf_image_tag("pdflogo.png")%>
+		  </div>
+		  <div id="table">
+			<table id="availability-list-topdf">
+			  <thead>
+			  <tr class="title">
+				<th>UNIT</th>
+				<th width="80px">BEDS</th>
+				<th width="80px">BATH</th>
+				<th>SF / M<sup>2</sup></th>
+				<th>OUTDOOR SPACE</th>
+				<th>ADDITIONAL ROOMS </th>
+			  </tr>
+			  </thead>
+			  <tbody>
+			  <% number_of_items = index == page_number  ?  @floor_plans.count % per_page :  per_page %>
+			  <% number_of_items.times do |i| %>
+				  <% floor_plan = @floor_plans[index*per_page + i] %>
+				  <tr class="content">
+					<td class="res"><%= floor_plan.residence %></td>
+					<td class="bed"><%= floor_plan.bedrooms %></td>
+					<td class="bath"><%= floor_plan.bathrooms %></td>
+					<td class="sqm"><%= floor_plan.indoor_sq_ft - floor_plan.indoor_sq_ft.to_i == 0 ?  floor_plan.indoor_sq_ft.to_i : floor_plan.indoor_sq_ft %>SF/<%= floor_plan.indoor_sq_m - floor_plan.indoor_sq_m.to_i == 0 ?  floor_plan.indoor_sq_m.to_i : floor_plan.indoor_sq_m %>M<sup>2</sup></td>
+					<td class="out">
+						<% if floor_plan.outdoor_sq_ft != 0 && floor_plan.outdoor_sq_ft != 0 %>
+							<%=  floor_plan.outdoor_sq_ft - floor_plan.outdoor_sq_ft.to_i == 0 ?  floor_plan.outdoor_sq_ft.to_i : floor_plan.outdoor_sq_ft  %>SF/<%= floor_plan.outdoor_sq_m - floor_plan.outdoor_sq_m.to_i == 0 ?  floor_plan.outdoor_sq_m.to_i : floor_plan.outdoor_sq_m  %>M<sup>2</sup>
+						<% end %>  
+					</td>
+					<td class="add"><%= floor_plan.additions_human %></td>
+				  </tr>
+			  <% end %>
+			  </tbody>
+			  <tfoot>
+			  <tr>
+				<td colspan="6"><span>Exclusive Sales &amp; Marketing: Stribling Marketing Associates. Pricing from $4.5 million.</span></td>
+			  </tr>
+			  </tfoot>
+			</table>
+		  </div>
+		  <div class="centered-footer-row">
+			<div class="footer">
+			  <%= wicked_pdf_image_tag("pdflogo_equal.png")%>
+			  All images are artist renderings. All dimensions are approximate and subject to normal construction variances and tolerances. Square footage exceeds the usable floor area. Sponsor reserves the right to make changes in accordance with the terms of the offering plan. Plans and dimensions may contain minor variations from floor to floor. This is not an offering. The complete offering terms are in an offering plan available from Sponsor, Snowplow LH 2 LLC, 950 Third Avenue - 18th Floor, New York, NY 10022. File CD14 - 0102.
+			</div>
+		  </div>
+		</div>
+	</div>
+<% end %>

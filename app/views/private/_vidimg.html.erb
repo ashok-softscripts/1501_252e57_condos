@@ -1,0 +1,70 @@
+<div id="section-vidimg" class="section">
+  <div class="section-title ondark">
+	<h1>Videos &amp Images</h1>
+
+	<p>Uncover detailed information about the building and its vision.</p>
+  </div>
+
+  <div id="carousel-vidimg" class="carousel">
+	<ul class="vidimg">
+	  <% @private_site.galleries.each do |gallery| %>
+		  <li data-gallery="<%= gallery.id %>">
+			<div class="overlay">
+			  <h1><%= gallery.heading %></h1>
+
+			  <h2><%= gallery.title %></h2>
+			</div>
+			<% img = gallery.thumbnail.url %>
+			<img src="<%= img %>"/>
+		  </li>
+	  <% end %>
+	  <% @private_site.private_videos.each do |video| %>
+		  <li data-video="<%= video.id %>">
+			<div class="overlay">
+			  <h1><%= video.heading %></h1>
+
+			  <h2><%= video.title %></h2>
+			</div>
+			<% img = video.thumbnail.exists? ? video.thumbnail.url : video.get_vimeo_thumbnail_url %>
+			<img src="<%= img %>"/>
+		  </li>
+	  <% end %>
+	</ul>
+
+	<img class="leftarrow" src="<%= asset_path("private/carousel_arrow_left_light.png") %>"/>
+	<img class="rightarrow" src="<%= asset_path("private/carousel_arrow_right_light.png") %>"/>
+  </div>
+  <ul id="vidimg-pag" class="pag-nav">
+  </ul>
+</div>
+
+<% @private_site.galleries.each do |gallery| %>
+  <div class="overlay overlay-gallery hidden" data-gallery_data="<%= gallery.id %>" data-gallery_length="<%= gallery.gallery_images.length %>"  data-gallery_current="0">
+	<ul class="gallery" >
+	  <% gallery.gallery_images.each_with_index do |img, index| %>
+		  <li data-gallery_image="<%= index %>">
+			<img src="<%= img.image.url %>" alt="<%= img.name %>"/>
+			<span><%= img.name %></span>
+		  </li>
+
+	  <% end %>
+	</ul>
+	<img class="left_arrow" src="<%= asset_path("left_arrow.png")%>" data-gallery="<%= gallery.id %>"/>
+	<img class="righ_arrow" src="<%= asset_path("right_arrow.png")%>" data-gallery="<%= gallery.id %>"/>
+	<ul id="" class="gallery-nav gallery-pag">
+	  <% if gallery.gallery_images.length > 1 %>
+		  <% gallery.gallery_images.each_with_index do |img, index| %>
+			  <li <%= "class='selected'" if index ==0 %> data-gallery_index="<%= index %>" data-gallery="<%= gallery.id %>"></li>
+		  <% end %>
+	  <% end %>
+	</ul>
+	<div class="close"></div>
+
+  </div>
+
+<% end %>
+<div class="hidden video-data">
+  <% @private_site.private_videos.each do |video| %>
+  	<div data-video_data="<%= video.id %>" data-video_url="<%= video.url %>"></div>
+  <% end %>
+</div>

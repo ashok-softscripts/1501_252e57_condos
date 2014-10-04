@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="medium-12 columns">
+	<h1>Edit Private Link</h1>
+  </div>
+</div>
+<div class="row">
+
+  <div class="medium-8 columns">
+	<%= simple_form_for(@private_site, :url => admin_private_site_path, :html => { :multipart => true }) do |f| %>
+		<%= render 'form', {:f => f} %>
+		<div class="form-actions">
+		  <%= f.button :submit, 'Save As New', class: "button" %>
+		  <%= link_to 'Back', admin_private_sites_dashboard_path, class: "button" %>
+		</div>
+	<% end %>
+  </div>
+</div>

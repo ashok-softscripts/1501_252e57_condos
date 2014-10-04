@@ -1,0 +1,781 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *= require_self
+ */
+
+//FONTS ***************************************
+
+@mixin verlag-book {
+  font-family: 'Verlag A', 'Verlag B', 'Verlag';
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin verlag-light {
+  font-family: 'Verlag A', 'Verlag B', 'Verlag';
+  font-weight: 300;
+  font-style: normal;
+}
+
+@mixin verlag-bold {
+  font-family: 'Verlag A', 'Verlag B', 'Verlag';
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin chronicle-roman {
+  font-family: 'Chronicle Text G1 A', 'Chronicle SSm A', 'Chronicle SSm B';
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin chronicle-roman2 {
+  font-family: 'Chronicle Text G1 A', 'Chronicle SSm A', 'Chronicle SSm B';
+  font-weight: 500;
+  font-style: normal;
+}
+
+@mixin chronicle-italic {
+  font-family: 'Chronicle Text G1 A', 'Chronicle SSm A', 'Chronicle SSm B';
+  font-weight: 400;
+  font-style: italic;
+}
+
+@mixin chronicle-semi {
+  font-family: 'Chronicle Text G1 A', 'Chronicle SSm A', 'Chronicle SSm B';
+  font-weight: 600;
+  font-style: italic;
+}
+
+@mixin chronicle-bold {
+  font-family: 'Chronicle Text G1 A', 'Chronicle SSm A', 'Chronicle SSm B';
+  font-weight: 700;
+  font-style: normal;
+}
+
+//MIXINS ******************************************
+@mixin rounded($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin my-transition($what, $howlong, $how) {
+  -webkit-transition: $what $howlong $how;
+  -moz-transition: $what $howlong $how;
+  -ms-transition: $what $howlong $how;
+  -o-transition: $what $howlong $how;
+  transition: $what $howlong $how;
+}
+
+@mixin borderbox {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+@mixin flex {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+//STYLES **************************************************
+
+body {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+  min-width: 620px;
+
+}
+
+.section {
+  position: relative;
+  display: block;
+  height: 900px;
+
+  background-position: center;
+  @include flex;
+
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+
+}
+
+.hidden {
+  display: none;
+}
+
+.bar {
+  background-color: #57626d;
+  display: block;
+  height: 65px;
+  width: 100%;
+
+}
+
+#section-home {
+  background-image: image-url('private/home_bg.jpg');
+  #logo {
+    top: 50px;
+    display: block;
+    position: absolute;
+  }
+
+  .content-box {
+    display: block;
+    position: absolute;
+    background-color: white;
+    max-width: 960px;
+    min-width: 600px;
+    height: 50%;
+    top: 200px;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    @include borderbox;
+
+    h1 {
+      @include chronicle-italic;
+      font-size: 19px;
+      color: #57626d;
+    }
+
+    h2 {
+      @include verlag-book;
+      font-size: 17px;
+      color: #57626d;
+      line-height: 24px;
+    }
+
+    span {
+      @include verlag-light;
+      font-size: 15px;
+      color: #57626d;
+      text-transform: uppercase;
+      a {
+        text-decoration: underline;
+        color: #57626d;
+      }
+    }
+
+    p {
+      @include verlag-light;
+      font-size: 17px;
+      color: #57626d;
+      line-height: 24px;
+      padding-bottom: 20px;
+
+    }
+
+    .website-link {
+      width: 100%;
+      display: block;
+      padding-top: 20px;
+      @include verlag-book;
+      font-size: 12px;
+      font-weight: 900;
+      color: #57626d;
+      text-decoration: none;
+
+      &:hover {
+
+      }
+    }
+
+    #home-content {
+      position: relative;
+      display: block;
+    }
+  }
+}
+
+#section-residence {
+  background-color: white;
+}
+
+#section-details {
+  background-image: image-url('private/details_bg.jpg');
+}
+
+#section-vidimg {
+  background-color: #899199;
+}
+
+#section-updates {
+  background-color: #dde0e2;
+}
+
+#section-footer {
+  height: 75px;
+  .email {
+    @include verlag-bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    display: block;
+    right: 60px;
+    margin-top: 30px;
+  }
+  .privacypolicy {
+    @include verlag-bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    display: block;
+    right: 240px;
+    margin-top: 30px;
+  }
+  .copyright {
+    @include verlag-book;
+    font-size: 9px;
+    color: white;
+    font-weight: 700;
+    position: absolute;
+    display: block;
+    left: 60px;
+    margin-top: 32px;
+  }
+}
+
+#nav-main {
+  position: fixed;
+  top: -150px;
+  @include my-transition(top, 250ms, linear);
+
+  #nav-logo {
+    position: absolute;
+    left: 40px;
+    top: 12px;
+  }
+
+  #hello {
+    position: absolute;
+    left: 128px;
+    bottom: 24px;
+    @include chronicle-italic;
+    font-size: 14px;
+    color: white;
+  }
+
+  ul {
+    list-style: none;
+    color: white;
+    display: block;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+
+    &.floatright {
+      float: right;
+      right: 40px;
+    }
+
+    li {
+      display: table;
+      @include borderbox;
+      height: 28px;
+      margin-top: 18px;
+      float: left;
+      padding-left: 16px;
+      padding-right: 16px;
+
+      span {
+        height: 100%;
+        vertical-align: middle;
+        text-align: center;
+        display: table-cell;
+        @include verlag-bold;
+        font-size: 12px;
+        color: white;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+
+        &.selected {
+          border-bottom: 1px solid #a1a7ad;
+        }
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+#scrolldown {
+  top: 825px;
+  position: absolute;
+  display: block;
+  border: none;
+  cursor: pointer;
+
+}
+
+.section-title {
+  position: absolute;
+  display: block;
+  text-align: center;
+  top: 150px;
+
+  &.ondark {
+    color: white;
+  }
+  &.onlight {
+    color: #57626d
+  }
+
+  h1 {
+    @include chronicle-italic;
+    font-size: 20px;
+  }
+
+  p {
+    @include verlag-light;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+
+#nav-home-buttons {
+  list-style: none;
+  color: white;
+  display: block;
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  top: 700px;
+
+  &.floatright {
+    float: right;
+    right: 40px;
+  }
+
+  li {
+    display: table;
+    @include borderbox;
+    height: 28px;
+    margin-top: 18px;
+    float: left;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    span {
+      height: 100%;
+      vertical-align: middle;
+      text-align: center;
+      display: table-cell;
+      @include verlag-bold;
+      font-size: 12px;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+
+      &.selected {
+        border-bottom: 1px solid white;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
+
+.pag-nav {
+  display: block;
+  position: absolute;
+  bottom: 120px;
+  height: 24px;
+  padding: 0px;
+  display: none;
+
+  li {
+    display: block;
+    @include rounded(20px);
+    position: relative;
+    float: left;
+    height: 12px;
+    width: 12px;
+    margin: 6px;
+    cursor: pointer;
+  }
+}
+
+#residence-pag {
+  li {
+    background-color: #e6e8e9;
+    &.selected {
+      background-color: #899199;
+    }
+  }
+}
+
+#details-pag {
+  li {
+    background-color: #d0d3d7;
+    &.selected {
+      background-color: #ffffff;
+    }
+  }
+}
+
+#vidimg-pag {
+  li {
+    background-color: #adb2b8;
+    &.selected {
+      background-color: #dcdee1;
+    }
+  }
+}
+
+#updates-pag {
+  li {
+    background-color: #ffffff;
+    &.selected {
+      background-color: #899199;
+    }
+  }
+}
+
+.carousel {
+  display: block;
+  position: absolute;
+  max-width: 960px;
+  min-width: 600px;
+  text-align: center;
+  padding-left: 80px;
+  padding-right: 80px;
+
+  .leftarrow {
+    position: absolute;
+    left: 15px;
+    cursor: pointer;
+    display: none;
+  }
+  .rightarrow {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    display: none;
+  }
+
+  ul {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    display: block;
+
+    li {
+      width: 30%;
+      height: 100%;
+      display: block;
+      float: left;
+      @include borderbox;
+      margin-left: 1.666%;
+      margin-right: 1.666%;
+      display: none;
+    }
+
+    &.residences {
+      li {
+        background-color: #eeeff0;
+        color: #57626d;
+        cursor: pointer;
+        position: relative;
+//        @include my-transition(all, 100ms, linear);
+
+        &:hover {
+//          @include my-transition(all, 100ms, linear);
+          background-color: #57626d;
+          color: white;
+
+          .downloadlink {
+            background-image: image-url('private/pdf_download_on.png');
+
+          }
+        }
+
+        h1 {
+          @include verlag-bold;
+          font-size: 21px;
+        }
+        p {
+          @include verlag-light;
+          font-size: 21px;
+        }
+        span {
+          @include verlag-light;
+          font-size: 14px;
+        }
+
+        .downloadlink {
+          display: block;
+          width: 50px;
+          height: 20px;
+          position: absolute;
+          bottom: -30px;
+          background-image: image-url('private/pdf_download_off.png');
+        }
+      }
+    }
+
+    &.details {
+      li {
+        background-color: #ffffff;
+        color: #57626d;
+        cursor: pointer;
+//        @include my-transition(all, 100ms, linear);
+
+        &:hover {
+          background-color: #57626d;
+          color: white;
+//          @include my-transition(all, 100ms, linear);
+        }
+
+        h1 {
+          @include verlag-light;
+          font-size: 21px;
+          margin: 0px;
+        }
+        h2 {
+          @include verlag-bold;
+          font-size: 21px;
+          margin: 5px;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    &.vidimg {
+      li {
+        background-color: #57626d;
+        color: #ffffff;
+        cursor: pointer;
+        @include flex;
+        overflow: hidden;
+
+        &:hover {
+
+          .overlay {
+            background-color: rgba(90, 100, 110, 0.9);
+            color: white;
+//            @include my-transition(all, 100ms, linear);
+          }
+          background-color: #57626d;
+          color: white;
+        }
+
+        h1 {
+          @include verlag-light;
+          font-size: 21px;
+          margin: 10px;
+        }
+        h2 {
+          @include verlag-bold;
+          font-size: 21px;
+          margin: 5px;
+          text-transform: uppercase;
+        }
+
+        img {
+          display: none;
+        }
+
+        .overlay {
+          display: block;
+          height: 100%;
+          width: 100%;
+          position: relative;
+          top: 0px;
+          left: 0px;
+          background-color: rgba(0, 0, 0, 0.3);
+//          @include my-transition(all, 100ms, linear);
+        }
+      }
+    }
+
+    &.updates {
+      li {
+        background-color: #ffffff;
+        color: #57626d;
+        cursor: pointer;
+//        @include my-transition(all, 100ms, linear);
+
+        &:hover {
+          background-color: #57626d;
+          color: white;
+//          @include my-transition(all, 100ms, linear);
+        }
+
+        h1 {
+          @include verlag-light;
+          font-size: 21px;
+          margin: 0px;
+        }
+        h2 {
+          @include verlag-bold;
+          font-size: 21px;
+          margin: 15px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+}
+
+
+.overlay-gallery {
+  display: none;
+  position: fixed;
+  background-color: #57626d;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  z-index: 10;
+  .close {
+    background-image: image-url('private/close.png');
+    width: 25px;
+    height: 25px;
+    position: fixed;
+    display: block;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+  }
+  .left_arrow{
+    position: fixed;
+    display: block;
+    top: 50%;
+    left: 50px;
+    cursor: pointer;
+  }
+  .righ_arrow{
+    position: fixed;
+    display: block;
+    top: 50%;
+    right: 50px;
+    cursor: pointer;
+  }
+  .gallery {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    li {
+      @include flex;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      display: none;
+      &.selected {
+        display: block;
+      }
+      span {
+        width: 100%;
+        text-align: center;
+        @include chronicle-italic;
+        font-size: 20px;
+        color: white;
+        position: absolute;
+        bottom: 80px;
+        padding-left: 200px;
+        padding-right: 200px;
+        @include borderbox;
+        display: block;
+      }
+    }
+    img {
+      display: none;
+    }
+  }
+
+  .gallery-nav {
+    display: block;
+    position: absolute;
+    bottom: 40px;
+    height: 16px;
+    padding: 0px;
+    margin: 0px;
+
+    li {
+      display: block;
+      @include rounded(20px);
+      position: relative;
+      float: left;
+      height: 8px;
+      width: 8px;
+      margin: 4px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, .3);
+
+      &.selected {
+        background-color: white;
+      }
+    }
+  }
+}
+
+#overlay-video {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #57626d;
+  z-index: 10;
+  .close {
+    background-image: image-url('private/close.png');
+    width: 25px;
+    height: 25px;
+    position: fixed;
+    display: block;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+  }
+
+  iframe {
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+

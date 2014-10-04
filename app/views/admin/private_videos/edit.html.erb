@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="medium-12 columns">
+	<h1>Editing Video</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-8 columns">
+	<%= simple_form_for(@private_video, :url => admin_private_video_path(@private_video), :html => {:multipart => true}) do |f| %>
+		<%= render 'form', {:f => f} %>
+	<% end %>
+  </div>
+</div>

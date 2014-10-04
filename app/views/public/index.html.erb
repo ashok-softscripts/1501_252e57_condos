@@ -1,0 +1,25 @@
+
+<%= render "home" %>
+<div id="website" class="hidden">
+  <%= render "video" %>
+  <div id="pause-overlay">
+	<%= render "gallery" %>
+	<%= render "design" %>
+	<%= render "developer" %>
+	<%= render "neighborhood" %>
+	<% if !@pres.empty? %>
+		<%= render "pres" %>
+	<% end %>
+	<%= render "availability" %>
+	<%= render "contact" %>
+	<%= render "legal" %>
+	<%= render "thankyou" %>
+	<div id="overlay-left-arrow" class="overlay-arrow-container inner-arrow-container">
+	  <img src="<%= asset_path("left_arrow.png") %>"/>
+	</div>
+	<div id="overlay-right-arrow" class="overlay-arrow-container inner-arrow-container">
+	  <img src="<%= asset_path("right_arrow.png") %>"/>
+	</div>
+
+  </div>
+</div>

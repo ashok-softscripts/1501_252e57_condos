@@ -1,0 +1,44 @@
+<%= f.error_notification %>
+
+<div class="form-inputs">
+  <%= f.input :residence %>
+  <%= f.input :price %>
+  <%= f.input :bedrooms %>
+  <%= f.input :bathrooms %>
+  <%= f.input :additions, as: :check_boxes,
+			  collection: [[t('floor_plans.additions.powder'), :powder],
+						   [t('floor_plans.additions.gallery'), :gallery],
+						   [t('floor_plans.additions.study'), :study],
+						   [t('floor_plans.additions.foyer'), :foyer],
+						   [t('floor_plans.additions.dining'), :dining],
+               [t('floor_plans.additions.library'), :library],
+						   [t('floor_plans.additions.sitting'), :sitting],
+						   [t('floor_plans.additions.mud'), :mud]],
+			  checked: @floor_plan.additions ? @floor_plan.additions.split(",") : []
+  %>
+  <%= f.input :indoor_sq_ft %>
+  <%= f.input :indoor_sq_m %>
+  <%= f.input :outdoor_sq_ft %>
+  <%= f.input :outdoor_sq_m %>
+  <%= f.input :common_charges %>
+  <%= f.input :monthly_total %>
+  <%= f.input :pilot %>
+  <%= f.input :avaliable_general, label: "Show on Public Site" %>
+  <%= f.input :avaliable_admins, label: "Show to Brokers" %>
+
+  <div class="input float required floor_plan_common_charges <%= "error" if !@floor_plan.errors[:plan].empty? %>">
+	<label>Floor Plan PDF <br/>
+	  <% if @floor_plan.plan.exists? %>
+		  Currently Selected: <%= @floor_plan.plan_file_name %>
+	  <% end %>
+	  <%= f.file_field :plan %>
+	</label>
+  </div>
+
+</div>
+
+<div class="form-actions">
+  <%= f.button :submit,"Add to Availability Chart", class: "button" %>
+  <%= link_to 'Back', admin_availability_path, class: "button" %>
+</div>
+

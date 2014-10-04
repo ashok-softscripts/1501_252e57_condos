@@ -1,0 +1,85 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    models:
+      video_section: "Static Content"
+    errors:
+      models:
+        user:
+          attributes:
+            firstname:
+              blank: 'First name is required'
+            lastname: 
+              blank: 'Last name is required'
+            email:
+              blank: 'Email is required'
+              invalid: 'Please enter a valid email address'
+            phone:
+              invalid: 'Please enter a valid phone number'
+
+    attributes:
+      private_site:
+        receiver_email: "To (Email Address)"
+        user_id: "From"
+        email_cc: "CC"
+        email_bcc: "BCC"
+        ps_email: "Email Content"
+        receiver_name: "Name on Site"
+        welcome_msg: "Welcome Message"
+      user:
+        firstname: 'First Name (required)'
+        lastname: 'Last Name (required)'
+        email: 'Email (required)'
+        phone: 'Phone'
+        country: 'Country'
+        size: 'Size'
+        comment: 'Comment'
+        broker: 'Broker'
+      floor_plans:
+        residence: "Unit"
+      gallery_image:
+        alt_name: 'Phone Description'
+        name: 'Description'
+
+  new:
+    size:
+      [['Two Bedroom', '2'], ['Three Bedroom', '3'], ['Four Bedroom', '4'], ['Five Bedroom', '5']]
+    broker:
+      [['Yes', 'true'], ['No', 'false']]
+    submit: 'Submit'
+    errors: 'The field you input below had an error'
+
+  private_site:
+    email: "Thank you for your interest in 252. As promised, here is a link to your private website personalized for you."
+    welcome: "Welcome to your personal website featuring floor plans and residence information curated for you."
+    welcome_sig: "Sincerely, Pamela D'Arc"
+  floor_plans:
+    additions:
+      powder: 'Powder Room'
+      gallery: 'Gallery'
+      study: 'Study Room'
+      foyer: 'Foyer'
+      dining: 'Dining Room'
+      sitting: 'Sitting Room'
+      mud: 'Mud Room'
+      library: 'Library'

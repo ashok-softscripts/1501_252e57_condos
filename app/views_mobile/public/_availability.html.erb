@@ -1,0 +1,28 @@
+<div id="screen-availability" class="screen">
+  <h1>Availability</h1>
+  <ul>
+	<% @plans.each do |floor_plan| %>
+		<li>
+		  <hr>
+		  <h3><%= floor_plan.residence %></h3>
+		  <p>
+			<span><span class="attrib">rooms:</span> <%= floor_plan.bedrooms %> BR/<%= floor_plan.bathrooms %> BA</span>
+			<br/>
+			<span><span class="attrib">indoor:</span> <%= floor_plan.indoor_sq_ft - floor_plan.indoor_sq_ft.to_i == 0 ?  floor_plan.indoor_sq_ft.to_i : floor_plan.indoor_sq_ft %> SF/ <%= floor_plan.indoor_sq_m - floor_plan.indoor_sq_m.to_i == 0 ?  floor_plan.indoor_sq_m.to_i : floor_plan.indoor_sq_m%> M2</span>
+			<br/>
+			<span>
+				<span class="attrib">outdoor:</span> 
+				<% if floor_plan.outdoor_sq_ft != 0 && floor_plan.outdoor_sq_ft != 0 %>
+					<%=  floor_plan.outdoor_sq_ft - floor_plan.outdoor_sq_ft.to_i == 0 ?  floor_plan.outdoor_sq_ft.to_i : floor_plan.outdoor_sq_ft  %> SF / <%= floor_plan.outdoor_sq_m - floor_plan.outdoor_sq_m.to_i == 0 ?  floor_plan.outdoor_sq_m.to_i : floor_plan.outdoor_sq_m  %> M2
+				<% end %>
+				</span>
+			<br/>
+			<span><span class="attrib">add’l:</span> <%= floor_plan.additions_human %></span>
+			<br/>
+		  </p>
+		  <span class="view-floorplan"><%= link_to 'View Floorplan', floor_plan.plan.url , :target => "_blank" %></span>
+		</li>
+
+	<% end %>
+  </ul>
+</div>

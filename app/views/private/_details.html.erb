@@ -1,0 +1,56 @@
+<div id="section-details" class="section">
+  <div class="section-title ondark">
+	<h1>Details</h1>
+	<p>Explore the detailed design features available to you throughout<br/> our residences, common spaces, and amenities.</p>
+  </div>
+  <div id="carousel-details" class="carousel">
+	<ul class="details">
+	  <% @private_site.si_details.each do |detail| %>
+		  <% if detail.si_item.kind_of?(Gallery) %>
+			  <li data-gallery="<%= detail.si_item.id %>">
+				<h1><%= detail.si_item.heading %></h1>
+
+				<h2><%= detail.si_item.title %></h2>
+
+			  </li>
+		  <% elsif detail.si_item.kind_of?(Article) %>
+			  <li data-pdf="<%= detail.si_item.article.url%>">
+				<h1><%= detail.si_item.description %></h1>
+				<h2><%= detail.si_item.title %></h2>
+			  </li>
+		  <% end %>
+	  <% end %>
+	</ul>
+
+	<img class="leftarrow" src="<%= asset_path("private/carousel_arrow_left_light.png")%>"/>
+	<img class="rightarrow" src="<%= asset_path("private/carousel_arrow_right_light.png")%>"/>
+  </div>
+  <ul id="details-pag" class="pag-nav">
+  </ul>
+</div>
+<% @private_site.si_details.each do |detail| %>
+	<% if detail.si_item.kind_of?(Gallery) %>
+		<% gallery = detail.si_item%>
+		<div class="overlay overlay-gallery hidden" data-gallery_data="<%= gallery.id %>" data-gallery_length="<%= gallery.gallery_images.length %>" data-gallery_current="0">
+		  <ul class="gallery" >
+			<% gallery.gallery_images.each_with_index do |img, index| %>
+				<li data-gallery_image="<%= index %>">
+				  <img src="<%= img.image.url %>" alt="<%= img.name %>"/>
+				  <span><%= img.name %></span>
+				</li>
+
+			<% end %>
+		  </ul>
+		  <img class="left_arrow" src="<%= asset_path("left_arrow.png")%>" data-gallery="<%= gallery.id %>"/>
+		  <img class="righ_arrow" src="<%= asset_path("right_arrow.png")%>" data-gallery="<%= gallery.id %>"/>		  <ul id="" class="gallery-nav gallery-pag">
+			<% if gallery.gallery_images.length > 1 %>
+				<% gallery.gallery_images.each_with_index do |img, index| %>
+					<li <%= "class='selected'" if index ==0 %> data-gallery_index="<%= index %>" data-gallery="<%= gallery.id %>"></li>
+				<% end %>
+			<% end %>
+		  </ul>
+		  <div class="close"></div>
+
+		</div>
+	<% end %>
+<% end %>

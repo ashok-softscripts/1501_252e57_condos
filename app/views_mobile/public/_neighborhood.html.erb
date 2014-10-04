@@ -1,0 +1,6 @@
+<% hood = Gallery.neighborhood.nil? ? Gallery.new : Gallery.neighborhood.first %>
+<div id="screen-neighborhood" class="screen">
+  <h1>Neighborhood</h1>
+  <hr />
+  <img src="<%= hood.gallery_images[0].image.url %>" alt="<%=hood.gallery_images[0].name %>"/>
+</div>

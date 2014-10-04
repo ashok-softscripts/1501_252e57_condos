@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="medium-6 columns">
+	<h1>Private Site Invitations</h1>
+  </div>
+  <div class="medium-6 columns align-right">
+	<%= link_to 'Export All Inquries', user_export_path(format: :csv, :all=>true), class: "button top_button" %>
+	<%= link_to 'Export Inquries', user_export_path(format: :csv), class: "button top_button" %>
+	<%= link_to 'Create URL', new_admin_private_site_path, class: "button top_button" %>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-12 columns private_sites">
+	<table>
+	  <thead>
+	  <tr>
+		<th class="date_col">Date Created</th>
+		<th class="name">Name</th>
+		<th class="email">Email</th>
+		<th class="plans">Floor Plans</th>
+		<th class="date_col">Date Sent</th>
+		<th class="inv">Invitation</th>
+		<th class="prev">Preview</th>
+		<% if is_admin? %>
+			<th colspan="2" class="action_col"></th>
+		<% end %>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <% @sites.each do |site| %>
+		  <tr>
+			<td><%= site.created_at.strftime("%b %d, %Y") %></td>
+			<td><%= site.receiver_name %></td>
+			<td><%= site.receiver_email %></td>
+			<td><%= site.floor_plans.map(&:residence).join(", ") %></td>
+			<td><%= site.ps_send.strftime("%b %d, %Y") if site.ps_send %></td>
+			<td><%= link_to site.ps_send.nil? ? 'Send': 'Re-Send', send_email_admin_private_site_path(site) %></td>
+			<td><%= link_to 'Preview', site.private_url %></td>
+			<% if is_admin? %>
+				<td><%= link_to 'Edit', edit_admin_private_site_path(site) %></td>
+				<td><%= link_to 'Delete', admin_private_site_path(site), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+			<% end %>
+		  </tr>
+	  <% end %>
+	  </tbody>
+	</table>
+  </div>
+</div>

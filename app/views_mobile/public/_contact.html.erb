@@ -1,0 +1,89 @@
+<div id="screen-contact" class="screen">
+	<h1>Contact</h1>
+	<hr />
+	<h3>If you would like to receive exclusive updates, please fill out the form below.</h3>
+	<%= form_for(@user) do |f| %>
+
+	<section id="form_fields">
+
+		<% if @user.errors.any? %>
+			<div id="error_explanation">
+				<p><%= t('new.errors') %></p>
+			</div>
+		<% end %>
+
+		<div class="row">
+			<div class="field left first_name">
+					<%= f.label :firstname %>
+					<%= f.text_field :firstname, :placeholder => place_holder("firstname", :required => true) %>
+			</div>
+
+			<div class="field right last_name">
+					<%= f.label :lastname %>
+					<%= f.text_field :lastname, :placeholder => place_holder("lastname", :required => true) %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="field left email">
+					<%= f.label :email %>
+					<%= f.text_field :email, :placeholder => place_holder("email", :required => true) %>
+			</div>
+			<div class="field right phone">
+					<%= f.label :phone %>
+					<%= f.telephone_field :phone, :placeholder => place_holder("phone", :required => false) %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="field left country">
+				<%= f.label :country %>
+				<%= f.text_field :country, :placeholder => place_holder("country", :required => false) %>
+			</div>
+
+			<div class="field right size">
+				<%= f.label :size %>
+				<%= f.select :size, t('new.size'), { :prompt => "Preferred residence size" } %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="field left comment">
+				<%= f.label :comment %>
+				<%= f.text_area :comment, :placeholder => place_holder("comment", :required => false) %>
+			</div>
+
+			<div class="field right broker">
+				<%= f.label :broker %>
+				<%= f.select :broker, t('new.broker'), { :prompt => "Are you a broker?" } %>
+			</div>
+
+			<div id="submission" class="field right submit">
+				<%= f.submit t('new.submit')%>
+			</div>
+
+		</div>
+
+	</section>
+	<% end %>
+	<div class="clearfix"></div>
+	<div class="row">
+		<div class="link">
+			<div itemscope itemtype="http://schema.org/LocalBusiness">
+ 			 		<span itemprop="name" style="display: none">252e57</span>
+				 <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+					 <span itemprop="streetAddress">252 East 57th Street</span>, 
+					 <span itemprop="addressLocality">New York</span>, 
+					 <span itemprop="addressRegion">NY</span>, 
+					 <span itemprop="postalCode">10022 </span>
+				 </span>
+				<br />
+				Sales Gallery, 201 East 57th Street - <span itemprop="telephone">(212) 369-5757</span> - <a href="mailto:INFO@252E57.COM">info@252e57.com</a>
+				</div> <br />
+			Exclusive Sales &amp; Marketing: Stribling Marketing Associates<br />
+		</div>
+	</div>
+	<div class="legal">
+		<a id="legal-link"> LEGAL </a>
+	</div>
+</div>

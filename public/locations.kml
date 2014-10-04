@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+	<Document>
+		<name>Locations for 252e57.</name>
+		<atom:link rel="related" href="http://252e57.com" />
+		<Folder>
+			<Placemark>
+				<name><![CDATA[252e57]]></name>
+				<address><![CDATA[252 East 57th Street, New York, NY, 10022 , United States]]></address>
+				<description><![CDATA[]]></description>
+				<Point>
+					<coordinates>-73.9660556,40.7596122,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+	</Document>
+</kml>

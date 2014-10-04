@@ -1,0 +1,135 @@
+<!--[if IE]>
+<div id="video-container">
+	<video id="video252" muted="muted" loop="loop" preload="none">
+		<source src="<%= asset_path "http://s3.amazonaws.com/softgravity/videos/252-bkgrd.mp4" %>" type="video/mp4"/>
+	</video>
+</div>
+<![endif]-->
+<!--[if !IE]><!-->
+ <div id="video-container">
+	<video id="video252" muted="muted" loop="loop" preload="none">
+		<source src="https://s3.amazonaws.com/softgravity/videos/252-bkgrd.webm" type="video/webm"/>
+		<source src="https://s3.amazonaws.com/softgravity/videos/252-bkgrd.mp4" type="video/mp4"/>
+	</video>
+</div>
+ <!--<![endif]-->
+
+<ul class="gallery" id="video-gallery">
+  <li class="img-container">
+	<img alt="Architecture" src="<%= asset_path "videoimg1.jpg" %>">
+  </li>
+  <li class="img-container">
+	<img alt="Arrival" src="<%= asset_path "videoimg2.jpg" %>">
+  </li>
+  <li class="img-container">
+	<img alt="Amenities" src="<%= asset_path "videoimg3.jpg" %>">
+  </li>
+  <li class="img-container">
+	<img alt="Residences" src="<%= asset_path "videoimg4.jpg" %>">
+  </li>
+  <li class="img-container">
+	<img alt="Views" src="<%= asset_path "videoimg5.jpg" %>">
+  </li>
+</ul>
+
+<div class="gallery-gradient-overlay"></div>
+
+
+<audio id="audio" loop="loop">
+  <source src="https://s3.amazonaws.com/softgravity/videos/i-m-confessing-that-i-love-you.mp3" type="audio/mpeg">
+</audio>
+
+
+<div id="logo-top">
+  <img src="<%= asset_path("logo_top.png") %>"/>
+</div>
+<div id="open-nav-area">
+<ul id="main-nav">
+  <li>
+	<a href="#" id="menu-btn">Menu</a>
+	<ul id="main-nav-menu" class="off">
+	  <%if older_ie? %>
+		<li><a id="main_nav_film" href="#">View Film</a>
+	  <% end %>
+	  <% if !Gallery.pub_availible.nil? %>
+		<li><a id="main_nav_gallery" href="#">Gallery</a>
+	  <% end %>
+	  </li>
+	  <li><a id="main_nav_design" href="#">Design Team</a>
+	  </li>
+	  <li><a id="main_nav_development" href="#">Developers</a>
+	  </li>
+	  <% if false %>
+		  <li><a id="main_nav_neighborhood" href="#">Neighborhood</a>
+		  </li>
+	  <% end%>
+	  <% if false %>
+		  <li><a id="main_nav_press" href="#">Press</a>
+		  </li>
+	  <% end %>
+	  <li><a id="main_nav_availabilty" href="#">Availability</a>
+	  </li>
+	  <li><a id="main_nav_contact" href="#">Contact</a>
+	  </li>
+	</ul>
+  </li>
+</ul>
+</div>
+
+<ul id="video-nav">
+  <li>
+	<a class="current" href="#"></a>
+  </li>
+  <li>
+	<a href="#"></a>
+  </li>
+  <li>
+	<a href="#"></a>
+  </li>
+  <li>
+	<a href="#"></a>
+  </li>
+  <li>
+	<a href="#"></a>
+  </li>
+</ul>
+
+<div id="video-caption">
+  <div id="video-caption-1" class="infocus" style="opacity:1;">
+	<h1>Architecture</h1>
+
+	<p>Graceful curved Italian glass gives the 65-story tower a sculptural silhouette from every vantage point</p>
+  </div>
+  <div id="video-caption-2">
+	<h1>Arrival</h1>
+
+	<p>Beautifully appointed reception rooms and a private gated porte cochère offer an elegant and exclusive arrival experience</p>
+  </div>
+  <div id="video-caption-3">
+	<h1>Amenities</h1>
+
+	<p>A collection of distinctively designed amenities includes a 34th floor club,<br />a 75-foot swimming pool and spa</p>
+  </div>
+  <div id="video-caption-4">
+	<h1>Residences</h1>
+
+	<p>Individually tailored floor plans, sumptuous materials and fine craftsmanship bring unique definition and flow to elegant living spaces</p>
+  </div>
+  <div id="video-caption-5">
+	<h1>Views</h1>
+
+	<p>The residences, which begin on the 36th floor, provide unique perspectives on Manhattan’s skyline, Central Park, and the East River</p>
+  </div>
+</div>
+
+<div id="mute-controls">
+  <img src="<%= asset_path("mute_on.png") %>" alt="Mute"/>
+</div>
+<div id="left-arrow" class="arrow-container">
+  <img src="<%= asset_path("left_arrow.png") %>"/>
+  <span class="arrow-name"></span>
+</div>
+<div id="right-arrow" class="arrow-container">
+  <img src="<%= asset_path("right_arrow.png") %>"/>
+  <span class="arrow-name"></span>
+</div>

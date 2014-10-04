@@ -1,0 +1,18 @@
+<div id="screen-press" class="overlay-view">
+  <div class="center-content">
+	<ul id="press-list">
+	  <% @pres.each do |article| %>
+		  <li class="press-content">
+			<h1><%= article.title %>, <%= article.published_date.strftime("%B %Y") %></h1>
+
+			<h2><%= article.description %></h2>
+			<a href="<%= article.article.url %>" target ="_blank">VIEW PDF</a>
+		  </li>
+	  <% end %>
+	</ul>
+  </div>
+  <div class="content-title">Press</div>
+  <div class="back-to-video">
+	<span><img src="<%= asset_path("back_arrow.png") %>"> Back <span class="to-film">to Film</span></span>
+  </div>
+</div>

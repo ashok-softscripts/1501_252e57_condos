@@ -1,0 +1,6 @@
+== README
+
+Ruby version
+	ruby version 2.1.1
+For gem dependencies go to Gemfile
+

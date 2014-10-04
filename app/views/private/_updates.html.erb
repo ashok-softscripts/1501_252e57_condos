@@ -1,0 +1,76 @@
+<div id="section-updates" class="section">
+  <div class="section-title onlight">
+	<h1>Updates</h1>
+
+	<p>Stay up to date on all things 252.</p>
+  </div>
+  <div id="carousel-updates" class="carousel">
+	<ul class="updates">
+	  <% @private_site.si_updates.each do |update| %>
+		  <% if update.si_item.kind_of?(Gallery) %>
+			  <li data-gallery="<%= update.si_item.id %>">
+				<h1><%= update.si_item.heading %></h1>
+
+				<h2><%= update.si_item.title %></h2>
+
+			  </li>
+		  <% elsif update.si_item.kind_of?(PrivateVideo) %>
+			  <li data-video="<%= update.si_item.id %>">
+				<h1><%= update.si_item.heading %></h1>
+
+				<h2><%= update.si_item.title %></h2>
+			  </li>
+		  <% elsif update.si_item.kind_of?(Article) %>
+			  <li data-pdf="<%= update.si_item.article.url%>">
+				<h1><%= update.si_item.description %></h1>
+
+				<h2><%= update.si_item.title %></h2>
+			  </li>
+		  <% end %>
+	  <% end %>
+	</ul>
+	<img class="leftarrow" src="<%= asset_path("private/carousel_arrow_left_dark.png") %>"/>
+	<img class="rightarrow" src="<%= asset_path("private/carousel_arrow_right_dark.png") %>"/>
+
+  </div>
+  <ul id="updates-pag" class="pag-nav">
+  </ul>
+
+</div>
+<% @private_site.si_updates.each do |update| %>
+	<% if update.si_item.kind_of?(Gallery) %>
+		<% gallery = update.si_item%>
+		<div class="overlay overlay-gallery hidden" data-gallery_data="<%= gallery.id %>"  data-gallery_length="<%= gallery.gallery_images.length %>"  data-gallery_current="0">
+		  <ul class="gallery">
+			<% gallery.gallery_images.each_with_index do |img, index| %>
+				<li data-gallery_image="<%= index %>">
+				  <img src="<%= img.image.url %>" alt="<%= img.name %>"/>
+				  <span><%= img.name %></span>
+				</li>
+
+			<% end %>
+		  </ul>
+
+		  <img class="left_arrow" src="<%= asset_path("left_arrow.png")%>" data-gallery="<%= gallery.id %>"/>
+		  <img class="righ_arrow" src="<%= asset_path("right_arrow.png")%>" data-gallery="<%= gallery.id %>"/>
+		  <ul id="" class="gallery-nav gallery-pag">
+			<% if gallery.gallery_images.length > 1 %>
+				<% gallery.gallery_images.each_with_index do |img, index| %>
+					<li <%= "class='selected'" if index ==0 %> data-gallery_index="<%= index %>" data-gallery="<%= gallery.id %>"></li>
+				<% end %>
+			<% end %>
+		  </ul>
+		  <div class="close"></div>
+
+		</div>
+	<% end %>
+<% end %>
+
+<div class="hidden video-data">
+	<% @private_site.si_updates.each do |update| %>
+		<% if update.si_item.kind_of?(PrivateVideo) %>
+			<% video = update.si_item %>
+			<div data-video_data="<%= video.id %>" data-video_url="<%= video.url %>"></div>
+		<% end%>
+	<% end %>
+</div>

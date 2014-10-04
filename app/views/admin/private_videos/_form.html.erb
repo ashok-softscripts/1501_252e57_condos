@@ -1,0 +1,19 @@
+<%= f.error_notification %>
+<%= f.input :update_section, as: :hidden %>
+<div class="form-inputs">
+  <%= f.input :heading %>
+  <%= f.input :title %>
+  <%= f.input :url, hint: "Video url exp. (//player.vimeo.com/video/100751417?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autoplay=1) taken from embeded code on the site" %>
+  <%= f.input :published_date %>
+
+  <lablel> Video Thumbnail
+	<%= f.file_field :thumbnail %>
+  </lablel>
+
+</div>
+
+<div class="form-actions">
+  <%= f.button :submit, class: "button" %>
+  <%= link_to 'Back', admin_content_path, class: "button" %>
+</div>
+

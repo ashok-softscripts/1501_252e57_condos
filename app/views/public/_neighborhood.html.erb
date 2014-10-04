@@ -1,0 +1,13 @@
+<% if !Gallery.neighborhood.empty? %>
+	<% hood = Gallery.neighborhood.first %>
+	<div id="screen-neighborhood" class="overlay-view">
+	  <ul id="neighborhood-map" class="gallery">
+		<li class="img-container" style="display:block"><img src="<%= hood.gallery_images[0].image.url %>" alt="<%=hood.gallery_images[0].name %>"/></li>
+	  </ul>
+	  <div class="gallery-gradient-overlay"></div>
+	  <div class="content-title">Neighborhood</div>
+	  <div class="back-to-video">
+		<span><img src="<%= asset_path("back_arrow.png") %>"> Back <span class="to-film">to Film</span></span>
+	  </div>
+	</div>
+<% end %>

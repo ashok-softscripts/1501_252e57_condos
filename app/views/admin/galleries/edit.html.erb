@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="medium-12 columns">
+	<h1>Editing Gallery</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-8 columns">
+	<%= simple_form_for(@gallery, :url => admin_gallery_path(@gallery), :html => {:multipart => true}) do |f| %>
+		<%= render 'form', {:f => f} %>
+	<% end %>
+  </div>
+</div>
+
+<div class="gallery_images">
+  <div class="row">
+	<div class="medium-8 columns">
+	  <table>
+		<thead>
+		<tr>
+		  <th>Description</th>
+		  <th>Phone Description</th>
+		  <th class="action_col"></th>
+		</tr>
+		</thead>
+		<tbody id="gallery_images">
+		<% @gallery.gallery_images.each do |gi| %>
+			<tr id="gi-<%= gi.id %>">
+			  <td><%= link_to gi.name, gi.image.url, :target => "_blank" %></td>
+			  <td><%= gi.alt_name %></td>
+			  <td><%= link_to 'Delete', remove_image_admin_gallery_path(gallery_image_id: gi.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	  </table>
+	</div>
+
+
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	$().ready(function() {
+		$('#gallery_images').tableDnD({
+			onDrop: function(table, row) {
+				$.ajax({
+					type: "POST",
+					url: "<%= sort_admin_gallery_path(@gallery) %>",
+					processData: false,
+					data: $.tableDnD.serialize() + '&authenticity_token=' + encodeURIComponent('<%= form_authenticity_token if protect_against_forgery? %>')
+				});
+			}
+		})
+	})
+</script>
+
+<div class="gallery_images_form">
+  <%= render 'gallery_image_form' %>
+</div>

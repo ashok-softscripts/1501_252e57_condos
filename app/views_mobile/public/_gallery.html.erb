@@ -1,0 +1,23 @@
+<% gallery = Gallery.pub_availible.nil? ? Gallery.new : Gallery.pub_availible.first %>
+<div id="screen-gallery" class="screen">
+  <h1>Gallery</h1>
+  <ul id="gal1-nav" class="gallery-nav">
+	<% gallery.gallery_images.each do |gi| %>
+		<li><a <%= 'class="current"' if gi.sequence == 0 %> href="#"></a></li>
+	<% end %>
+  </ul>
+</div>
+<ul id="gallery-content">
+<% gallery.gallery_images.each do |gi| %>
+	<li>
+	  <img src="<%= gi.image.url %>" alt="<%= gi.name %>"/>
+  	  <div class="gallery-gradient-overlay"></div>
+	  <span class="gallery-caption tablet">
+		<p><%= gi.name %></p>
+	  </span>
+	  <span class="gallery-caption phone">
+		<p><%= gi.alt_name %></p>
+	  </span>
+	</li>
+<% end %>
+</ul>

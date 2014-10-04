@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="medium-9 columns">
+	<h1>Public Site - Design Team Content</h1>
+  </div>
+  <div class="medium-3 columns align-right">
+  </div>
+</div>
+<div class="row">
+  <div class="medium-12 columns">
+	<table>
+	  <thead>
+	  <tr>
+		<th class="date_col">Title</th>
+		<th>Subtitle</th>
+		<% if is_admin? %>
+			<th class="action_col"></th>
+		<% end %>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <% @video_sections.each do |section| %>
+		  <tr>
+			<td><%= section.section %></td>
+			<td><%= section.title %></td>
+			<% if is_admin? %>
+				<td><%= link_to 'Edit', edit_admin_video_section_path(section) %></td>
+			<% end %>
+		  </tr>
+	  <% end %>
+	  </tbody>
+	</table>
+  </div>
+</div>

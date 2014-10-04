@@ -1,0 +1,44 @@
+<div id="screen-design" class="overlay-view">
+  <div class="center-content">
+	<ul id="design-list">
+	  <% @design.each do |design| %>
+		  <li class="design-content" data-id="<%= design.id %>">
+			<h1><%= design.section %></h1>
+
+			<h2><%= design.title %></h2>
+			<%# terrebli thing may happen if unlucky and it substring in the midle of html%>
+			<% truncate = design.body[0..150] %>
+			<% last_space = truncate.rindex(" ") %>
+			<%= raw truncate[0 .. last_space] %> ...</p>
+			<a href="#" id="design-content-a-<%= design.id %>" >Read More</a>
+		  </li>
+
+	  <% end %>
+	</ul>
+  </div>
+  <div class="content-title">Design Team</div>
+  <div class="back-to-video">
+	<span><img src="<%= asset_path("back_arrow.png") %>"> Back <span class="to-film">to Film</span></span>
+  </div>
+</div>
+<div id="screen-design2" class="overlay-view">
+  <div class="hidden design-data">
+	<% @design.each do |design| %>
+		<div data-id="<%= design.id %>">
+		  <h1><%= design.section %></h1>
+
+		  <h2><%= design.title %></h2>
+		  <%= raw design.body %>
+		</div>
+
+	<% end %>
+	</div>
+	<div class="center-content">
+	  <div class="design-content-full" id="design-displaycf"></div>
+	  <a href="#" class="to-design">Back To Design Team</a>
+	</div>
+	<div class="content-title">Design Team</div>
+	<div class="back-to-video">
+	  <span><img src="<%= asset_path("back_arrow.png") %>"> Back <span class="to-film">to Film</span></span>
+	</div>
+</div>

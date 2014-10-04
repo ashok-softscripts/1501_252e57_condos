@@ -1,0 +1,81 @@
+<html>
+  <head>
+     <link href="//cloud.typography.com/7147492/768624/css/fonts.css" type="text/css" rel="stylesheet">
+     <style>
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+
+      }
+      #container {      
+        text-align: center;
+        width:400px;
+        position: absolute;
+      }
+      /*Background Image Stretch*/
+      img#bg {
+        position:fixed;
+        z-index: 0;
+        bottom:0;
+        left:0;
+        min-width:100%;
+        min-height:100%;
+      }
+       #logo-top {
+          display: block;
+          position: fixed;
+          text-align: center;
+          top: 36px;
+          width: 100%;
+          z-index: 100;
+      }
+      .maintext {
+        color:#FFF;
+        font-family: 'Georgia';
+        font-size:20px;
+        font-style: italic;
+        line-height: 29px;
+      }
+      .back-to-site {
+        color: #939598;
+        font-family: 'Verlag A', 'Verlag B', 'Verlag'; font-weight: 700; font-style: normal;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-top: 15px;
+        display: block;
+        text-decoration: none;
+      }
+     </style>
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script type="text/javascript">
+     window.onload = function() {
+        positionDocument();
+      };
+      window.onresize = function() {
+        positionDocument();
+      };
+      function positionDocument() {
+        $("#bg").css("left", (($("#bg").width() - $(window).width()) / 2) * -1);
+        $("#container").css("top", ($(window).height() - $("#container").height()) / 2);
+        $("#container").css("left", ($(window).width() - $("#container").width()) / 2);
+      };
+      </script>
+
+  </head>
+
+  <body>
+      <img src="/broke/assets/home_bg_message.jpg" alt="background image" id="bg" />
+      <div id="logo-top">
+          <img src="/broke/assets/logo_top.png">
+      </div>
+    <div id="container">
+        <span class="maintext">Sorry. Something went wrong.<br />Please click below to return to the main site.</span>
+        <a href="/" class="back-to-site">252 Main Site</a>
+    </div>
+  </body>
+  
+</html>

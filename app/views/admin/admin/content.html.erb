@@ -1,0 +1,22 @@
+<% if is_admin? %>
+	<%= render "static_content" %>
+<% end %>
+
+<% if is_admin? %>
+	<%= render "gallery_selection" %>
+<% end %>
+
+<%= render "galleries" %>
+<% if is_admin? %>
+	<%= render "neighborhood_selection" %>
+<% end %>
+
+
+<%= render "articles" %>
+
+<%= render "private_videos" %>
+
+
+<%= render "private_details" %>
+
+<%= render "private_updates" %>

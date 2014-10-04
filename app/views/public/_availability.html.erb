@@ -1,0 +1,51 @@
+<div id="screen-availability" class="overlay-view">
+  <div class="center-content-availability">
+	<table id="availability-list">
+	  <thead>
+	  <tr>
+		<th>Unit</th>
+		<th>Beds</th>
+		<th>Bath</th>
+		<th>SF/M<sup>2</sup></th>
+		<th>Outdoor&nbsp;&nbsp;Space</th>
+		<th>Additional&nbsp;&nbsp;Rooms</th>
+		<th></th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <% @plans.each do |floor_plan| %>
+		  <tr>
+			<td class="residence"><%= floor_plan.residence %></td>
+			<td class="bedrooms"><%= floor_plan.bedrooms %></td>
+			<td class="bathrooms"><%= floor_plan.bathrooms %></td>
+			<td class="indoor"><%= floor_plan.indoor_sq_ft - floor_plan.indoor_sq_ft.to_i == 0 ?  floor_plan.indoor_sq_ft.to_i : floor_plan.indoor_sq_ft  %>/<%= floor_plan.indoor_sq_m - floor_plan.indoor_sq_m.to_i == 0 ?  floor_plan.indoor_sq_m.to_i : floor_plan.indoor_sq_m %></td>
+			<td class="outdoor">
+			  <% if floor_plan.outdoor_sq_ft != 0 && floor_plan.outdoor_sq_ft != 0 %>
+				   <%= floor_plan.outdoor_sq_ft - floor_plan.outdoor_sq_ft.to_i == 0 ?  floor_plan.outdoor_sq_ft.to_i : floor_plan.outdoor_sq_ft   %>/<%= floor_plan.outdoor_sq_m - floor_plan.outdoor_sq_m.to_i == 0 ?  floor_plan.outdoor_sq_m.to_i : floor_plan.outdoor_sq_m   %>
+			  <% end %>
+			</td>
+			<td><%= floor_plan.additions_human %></td>
+			<td class="floorplans"><%= link_to image_tag('view_icon.png'), floor_plan.plan.url, :target => "_blank" %>
+				<%= link_to image_tag('download_icon.png'), download_admin_floor_plan_path(floor_plan) %> </td>
+		  </tr>
+	  <% end %>
+	  </tbody>
+	  <tfoot>
+	  <tr>
+		<td colspan="7">
+			<span style="float:left;">Exclusive Sales &amp; Marketing: Stribling Marketing Associates. Pricing from $4.5 million.</span>
+			<span style="float:right;word-spacing: 4px;"><%=link_to "Download List", floor_plans_export_path(format: :pdf) %></span>
+		</td>
+	  </tr>
+	  </tfoot>
+	</table>
+  </div>
+  <div class="content-title">Availability</div>
+  <div class="back-to-video">
+	<span><img src="<%= asset_path("back_arrow.png") %>"> Back <span class="to-film">to Film</span></span>
+  </div>
+  <div class="avil-nav-wrap">
+	<ul class="avil-nav">
+	</ul>
+  </div>
+</div>

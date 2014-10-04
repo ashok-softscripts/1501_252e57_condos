@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>252 East Fifty Seven — Condominium Residences</title>
+  <%= stylesheet_link_tag    'admin/admin', media: 'all' %>
+  <link href="//cdn.datatables.net/plug-ins/725b2a2115b/integration/foundation/dataTables.foundation.css" media="all" rel="stylesheet">
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag 'admin/admin' %>
+  <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.1/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/plug-ins/725b2a2115b/integration/foundation/dataTables.foundation.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header>
+  <%= render 'layouts/navigation' %>
+</header>
+<main role="main" class="small-12 columns">
+  <%= render 'layouts/messages' %>
+  <%= yield %>
+</main>
+</body>
+</html>

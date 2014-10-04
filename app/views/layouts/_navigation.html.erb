@@ -1,0 +1,27 @@
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar data-options="sticky_on: large">
+	<section class="top-bar-section">
+	  <ul class="title-area">
+		<li class="name"><h1><a href="#"><%= current_user.email %></a></h1></li>
+	  </ul>
+	  <ul class="left" >
+
+		<li <% if @nav == :dashboard %> class="active" <% end %> >
+		  <%= link_to "Dashboard", admin_dashboard_path %>
+		</li>
+		<li <% if @nav == :content %> class="active" <% end %> >
+		  <%= link_to "Content", admin_content_path %>
+		</li>
+		<li <% if @nav == :availability %> class="active" <% end %> >
+		  <%= link_to "Availability", admin_availability_path %>
+		</li>
+		<li <% if @nav == :private_sites %> class="active" <% end %> >
+		  <%= link_to "Private Sites", admin_private_sites_dashboard_path %>
+		</li>
+	  </ul>
+	  <ul class="right">
+		<li><%= link_to "sign out", destroy_user_session_path, :method => :delete , class: "button" %></li>
+	  </ul>
+	</section>
+  </nav>
+</div>

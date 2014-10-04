@@ -1,0 +1,22 @@
+<div id="screen-design" class="screen">
+  <h1>Design Team</h1>
+
+  <ul>
+	<% @design.each do |design| %>
+	<li>
+
+
+	  <hr>
+	  <h2><%= design.section %></h2>
+
+	  <h3><%= design.title %></h3>
+
+	  <div class="short"><%= raw design.body[0, 150] + '...' %></p></div>
+
+	  <div class="long"><%= raw design.body %> </div>
+	  <span class="more-less">Read More</span>
+	</li>
+	<% end%>
+  </ul>
+
+</div>

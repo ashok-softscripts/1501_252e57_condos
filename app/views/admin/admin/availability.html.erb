@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="medium-6 columns">
+	<h1> Availability Chart</h1>
+  </div>
+  <div class="medium-6 columns align-right">
+	<%= link_to 'Export Units', admin_floor_plans_path(format: :pdf),class: "button top_button" %>
+	<% if is_admin? %>
+		<%= link_to 'Add Unit', new_admin_floor_plan_path, class: "button top_button" %>
+	<% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-12 columns">
+	<table class="tablesorter availability">
+	  <thead>
+	  <tr>
+		<th></th>
+		<th>Unit</th>
+		<th>Bedrooms</th>
+		<th>Bathrooms</th>
+
+		<th>Indoors</th>
+		<th>Outdoors</th>
+		<th>Price</th>
+
+		<% if is_admin? %>
+			<th>Availability Chart</th>
+			<th>Avaliable For Brokers</th>
+		<%end%>
+		<th>Floorplans</th>
+		<% if is_admin? %>
+			<th colspan="2"></th>
+		<% end %>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <% @floor_plans.each do |floor_plan| %>
+		  <tr>
+			<td><a href="#" data-id="<%= floor_plan.id %>" class="expand_row">&#9656;</a></td>
+			<td><%= floor_plan.residence %></td>
+			<td><%= floor_plan.bedrooms %></td>
+			<td><%= floor_plan.bathrooms %></td>
+			<td><%= floor_plan.indoor_sq_ft %>SF / <%= floor_plan.indoor_sq_m %> M2</td>
+			<td>
+				<% if floor_plan.outdoor_sq_ft != 0 && floor_plan.outdoor_sq_ft != 0 %>
+					<%= floor_plan.outdoor_sq_ft %>SF / <%= floor_plan.outdoor_sq_m %> M2
+				<% end %>
+			</td>
+			<td><%= floor_plan.price %></td>
+			<% if is_admin? %>
+				<td><%= floor_plan.avaliable_general %></td>
+				<td><%= floor_plan.avaliable_admins %></td>
+			<% end %>
+			<td><%= link_to 'View', floor_plan.plan.url, :target => "_blank" %> </td>
+			<% if is_admin? %>
+				<td><%= link_to 'Edit', edit_admin_floor_plan_path(floor_plan) %></td>
+				<td><%= link_to 'Delete', admin_floor_plan_path(floor_plan), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+			<% end %>
+		  </tr>
+		  <tr data-id="<%= floor_plan.id %>" class="extra_info expand-child">
+			<td colspan="12">
+			  <div class="row">
+				<div class="medium-3 columns">
+				  <ul>
+					<li><label> Residence: </label> <%= floor_plan.residence %></li>
+					<li><label> Bedrooms: </label> <%= floor_plan.bedrooms %></li>
+					<li><label> Bathrooms: </label> <%= floor_plan.bathrooms %></li>
+				  </ul>
+				</div>
+				<div class="medium-3 columns">
+				  <ul>
+					<li>
+					  <label>Additional Rooms: </label> <br/> <%= floor_plan.additions_human %>
+					</li>
+				  </ul>
+
+				</div>
+				<div class="medium-3 columns">
+				  <ul>
+					<li>
+					  <label>Indoor (sq. ft): </label> <%= floor_plan.indoor_sq_ft %>
+					</li>
+					<li>
+					  <label>Indoor (m<sup>2</sup>): </label> <%= floor_plan.indoor_sq_m %>
+					</li>
+					<li>
+					  <label>Outdoor (sq. ft): </label> <%= floor_plan.outdoor_sq_ft %>
+					</li>
+					<li>
+					  <label>Outdoor (m<sup>2</sup>): </label> <%= floor_plan.outdoor_sq_m %>
+					</li>
+				  </ul>
+
+				</div>
+				<div class="medium-3 columns">
+				  <ul>
+					<li>
+					  <!--<div class="row">-->
+					  <!--<div class="medium-9 columns align-right">-->
+					  <label>Price: </label>
+					  <!--</div>-->
+					  <!--<div class="medium-3 columns align-left">-->
+					  <%= floor_plan.price %>
+					  <!--</div>-->
+					  <!--</div>-->
+					</li>
+					<li>
+					  <!--<div class="row">-->
+					  <!--<div class="medium-9 columns align-right">-->
+					  <label>Est. Common Charges: </label>
+					  <!--</div>-->
+					  <!--<div class="medium-3 columns align-left">-->
+					  <%= floor_plan.common_charges %>
+					  <!--</div>-->
+					  <!--</div>-->
+					</li>
+					<li>
+					  <!--<div class="row">-->
+					  <!--<div class="medium-9 columns align-right">-->
+					  <label>PILOT: </label>
+					  <!--</div>-->
+					  <!--<div class="medium-3 columns align-left">-->
+					  <%= floor_plan.pilot %>
+					  <!--</div>-->
+					  <!--</div>-->
+					</li>
+					<li>
+					  <!--<div class="row">-->
+					  <!--<div class="medium-9 columns align-right">-->
+					  <label>Est. Monthly Total: </label>
+					  <!--</div>-->
+					  <!--<div class="medium-3 columns align-left">-->
+					  <%= floor_plan.monthly_total %>
+					  <!--</div>-->
+					  <!--</div>-->
+					</li>
+
+				  </ul>
+				</div>
+			  </div>
+			</td>
+		  </tr>
+	  <% end %>
+	  </tbody>
+	</table>
+  </div>
+</div>

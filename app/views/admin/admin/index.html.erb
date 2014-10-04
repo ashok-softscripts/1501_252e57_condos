@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="medium-12 columns">
+	<h1>Welcome Message</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-12 columns">
+	<% if is_admin? %>
+		<p> Admin Welcome MSG</p>
+	<% else %>
+		<p> Broker Welcome MSG</p>
+	<% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-12 columns">
+	<h1>Recent Updates</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-12 columns">
+	<table>
+	  <thead>
+	  <tr>
+		<th class="date_col">Date</th>
+		<th> Who</th>
+		<th>Description</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <% @changes.each do |change| %>
+		  <tr>
+			<td><%= change.created_at.strftime("%b %d, %Y") %></td>
+			<td><%=  change.who %></td>
+			<td>
+			  <% if change.object_type == "VideoSection" %>
+				  Static Content (<%= change.object_name %>) was <%= change.action %>
+			  <% else %>
+				 <%= change.object_type %> (<%= change.object_name %>) was <%= change.action %>
+			  <% end %>
+			</td>
+		  </tr>
+	  <% end %>
+	  </tbody>
+	</table>
+  </div>
+</div>

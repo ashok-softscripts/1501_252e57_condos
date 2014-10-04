@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="medium-9 columns">
+	<h1>Private Site - Videos</h1>
+  </div>
+  <div class="medium-3 columns align-right">
+	<% if is_admin? %>
+		<%= link_to 'Add Video', new_admin_private_video_path, class: "button top_button" %>
+	<% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-12 columns">
+	<table>
+	  <thead>
+	  <tr>
+		<th>Title of Video</th>
+		<% if is_admin? %>
+			<th colspan="2" class="action_col"></th>
+		<% end %>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <% @private_videos.each do |video| %>
+		  <tr>
+			<td><%= video.title %></td>
+			<% if is_admin? %>
+				<td><%= link_to 'Edit', edit_admin_private_video_path(video) %></td>
+				<td><%= link_to 'Delete', admin_private_video_path(video), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+			<% end %>
+		  </tr>
+	  <% end %>
+	  </tbody>
+	</table>
+  </div>
+</div>

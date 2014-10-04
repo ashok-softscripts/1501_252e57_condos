@@ -1,0 +1,28 @@
+<%= render "home" %>
+
+<% if @private_site.floor_plans.count > 0 %>
+	<%= render "residence" %>
+<% end %>
+
+<% if @private_site.si_details.count > 0  %>
+	<%= render "details" %>
+<% end %>
+<% if @private_site.galleries.count > 0 || @private_site.private_videos.count > 0 %>
+	<%= render "vidimg" %>
+<% end %>
+<% if @private_site.si_updates.count > 0 %>
+	<%= render "updates" %>
+<% end %>
+<%= render "footer" %>
+
+<%= render "nav" %>
+
+
+<div id="overlay-video" class="overlay">
+  <div class="close"></div>
+  <iframe src="" width="600" height="337" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<div id="overlay-privacypolicy" class="overlay">
+  <div class="close"></div>
+</div>

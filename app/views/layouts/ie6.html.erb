@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>252 East Fifty Seven — Condominium Residences</title>
+  <meta name="keywords" content="Condos For Sale Upper East Side NYC,Luxury Condominiums NYC,Luxury Apartments Midtown NYC,Midtown Condos With River Views,Manhattan Luxury Condos For Sale,Luxury Condos For Sale NYC,Condos For Sale Upper East Side,Luxury Apartments Upper East Side,Luxury Apartments with Parking Midtown East,Luxury Condos Manhattan,Condos For Sale 57th Street Manhattan,Apartments For Sale Upper East Side,Condos For Sale Manhattan,Upper East Side Condos,Condos Upper East Side,Luxury Apartments Manhattan,Condos For Sale NYC,Luxury Apartments Midtown East With Pool,Condos Upper East Side With Park Views,Manhattan Luxury Condos With Parking,Manhattan Luxury Condos with Pool"/>
+  <meta name="description" content="Luxury Condominium Residences on 57th Street in Manhattan with Stunning Interiors, Park and River Views, Swimming Pool, Fitness Center and Private Parking"/>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+   <%= javascript_include_tag 'ie6application' %>
+  <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7147492/768624/css/fonts.css"/>
+  <%= stylesheet_link_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <style type="text/css">
+    body {
+      background: url('assets/home_bg_message.jpg') fixed;
+      color:#FFF;
+    }
+    .back-to-video, .content-title, .arrow-container, .overlay-view, #screen-gallery, .gallery-nav-wrap {
+      display: none;
+    }
+    .ie6logo {
+      margin:30px auto 0;
+      display:block;
+      padding-bottom: 50px;
+    }
+    .center-content, .center-content-availability, .gallery .img-container img, .gallery-nav-wrap {
+      width: 940px;
+      margin:0 auto;
+      height: auto !important;
+    }
+    .gallery .img-container {
+      display:block;
+    }
+    .center-content .developer-content-full .last.column, .center-content .design-content-full .last.column {
+      margin:10px;
+    }
+    .overlay-view, #screen-gallery {
+      padding-bottom:50px;
+    }
+    .center-content .press-content {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="ie6navwrap">
+    <ul id="ie6nav">
+      <li id="ie6gallery" class="ie6navitem">Gallery</li>
+      <li id="ie6design" class="ie6navitem">Design</li>
+      <li id="ie6developers" class="ie6navitem">Developers</li>
+      <li id="ie6neighborhood" class="ie6navitem">Neighborhood</li>
+      <li id="ie6press" class="ie6navitem">Press</li>
+      <li id="ie6availability" class="ie6navitem">Availability</li>
+      <li id="ie6contact" class="ie6navitem">Contact</li>
+    </ul>
+  </div>
+  <img class="ie6logo" src="<%= asset_path("logo_top.gif")%>"/>
+  <%= render "gallery" %>
+  <%= render "design" %>
+  <%= render "developer" %>
+  <%= render "neighborhood" %>
+  <%= render "pres" %>
+  <%= render "availability" %>
+  <%= render "contact" %>
+  <%= render "legal" %>
+  <%= render "thankyou" %>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53419059-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+</body>
+</html>

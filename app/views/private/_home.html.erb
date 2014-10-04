@@ -1,0 +1,28 @@
+<div id="section-home" class="section">
+  <img id="logo" src="<%= asset_path("private/logo.png")%>"/>
+  <div class="content-box">
+	<div id="home-content">
+	  <h1>Welcome, <%= @private_site.receiver_name %></h1>
+	  <p><%= @private_site.welcome_msg %></p>
+	  <h2><%= @private_site.welcome_signiture %></h2>
+	  <span><a href='mailto:<%=@private_site.user.email %>'><%=@private_site.user.email %></a></span>
+	  <a class="website-link" href="http://www.252E57.com">WWW.252E57.COM</a>
+	</div>
+  </div>
+  <ul id="nav-home-buttons">
+	<% if @private_site.floor_plans.count > 0 %>
+		<li class="goToResidences"><span>Residences</span></li>
+	<% end %>
+	<% if @private_site.si_details.count > 0 %>
+		<li class="goToDetails"><span>Details</span></li>
+	<% end %>
+	<% if @private_site.galleries.count > 0 || @private_site.private_videos.count > 0 %>
+		<li class="goToVidImg"><span>Videos &amp Images</span></li>
+	<% end %>
+	<% if @private_site.si_updates.count > 0 %>
+		<li class="goToUpdates"><span>Updates</span></li>
+	<% end %>
+  </ul>
+
+  <img id="scrolldown" src="<%= asset_path("private/scroll_down.png")%>"/>
+</div>

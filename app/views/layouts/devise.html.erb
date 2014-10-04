@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>252 East Fifty Seven — Condominium Residences</title>
+  <%= stylesheet_link_tag    'admin/admin', media: 'all' %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag 'admin/admin' %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="background-color: #67707a;">
+<div class="row">
+  <div class="small-4 colums"></div>
+  <div class="small-4 columns">
+	<img id="home-logo" src="<%= asset_path("logo_large.png") %>" />
+	<%= yield %>
+  </div>
+  <div class="small-4 colums"></div>
+</div>
+</body>
+</html>
